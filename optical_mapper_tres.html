@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+    input[type=text]{ font-size: 20px; width: 100px }
+</style>
+<title>Optical Mapper Tres (v 3.41)</title>
+</head>
+<body>
+<h2>Optical Mapper Tres (v 3.41)</h2>
+<table id="main_table" bgcolor="#DDDDDD" border="1">
+  <tbody>
+    <tr>
+      <td valign="top" width=200 bgcolor="#CCDDCC">
+        <hr>
+          <input value="check_20210219" id="check_20210219" type="checkbox">2021-02-19:
+          <div id="div_20210219" style="border:2px solid black; display: none;">
+            <a href="optical_mapper_tres.html?s=20210219_2_10.cube&g=20210219">20210219_2_10</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_2_10_long.cube&g=20210219">20210219_2_10 (long)</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_2_11.cube&g=20210219">20210219_2_11</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_2_11_long.cube&g=20210219">20210219_2_11 (long)</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_4_10.cube&g=20210219">20210219_4_10</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_4_11.cube&g=20210219">20210219_4_11</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_4_11_long.cube&g=20210219">20210219_4_11 (long)</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_4_12.cube&g=20210219">20210219_4_12</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_4_12_long.cube&g=20210219">20210219_4_12 (long)</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_5_10.cube&g=20210219">20210219_5_10</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_5_11.cube&g=20210219">20210219_5_11</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_5_11_long.cube&g=20210219">20210219_5_11 (long)</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_5_12.cube&g=20210219">20210219_5_12</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_5_12_long.cube&g=20210219">20210219_5_12 (long)</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_6_10.cube&g=20210219">20210219_6_10</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_6_11.cube&g=20210219">20210219_6_11</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_6_12.cube&g=20210219">20210219_6_12</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_6_12_long.cube&g=20210219">20210219_6_12 (long)</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_6_13.cube&g=20210219">20210219_6_13</a><br>
+            <a href="optical_mapper_tres.html?s=20210219_6_13_long.cube&g=20210219">20210219_6_13 (long)</a><br>
+          </div>
+          <br>
+          <input value="check_20210217" id="check_20210217" type="checkbox">2021-02-17:
+          <div id="div_20210217" style="border:2px solid black; display: none;">
+            <a href="optical_mapper_tres.html?s=20210217_0_08.cube&g=20210217">20210217_0_08</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_0_09.cube&g=20210217">20210217_0_09</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_0_10.cube&g=20210217">20210217_0_10</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_1_08.cube&g=20210217">20210217_1_08</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_1_09.cube&g=20210217">20210217_1_09</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_1_10.cube&g=20210217">20210217_1_10</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_1_11.cube&g=20210217">20210217_1_11</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_2_06.cube&g=20210217">20210217_2_06</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_2_07.cube&g=20210217">20210217_2_07</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_2_08.cube&g=20210217">20210217_2_08</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_2_09.cube&g=20210217">20210217_2_09</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_3_08.cube&g=20210217">20210217_3_08</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_3_09.cube&g=20210217">20210217_3_09</a><br>
+            <a href="optical_mapper_tres.html?s=20210217_3_10.cube&g=20210217">20210217_3_10</a><br>
+          </div>
+      </td>
+      <td valign="top">
+        <canvas id="canvas2D" width=300 height=300></canvas><hr>
+        <input value="Rewind" id="rewind" type="button">
+        <input value="Back" id="back" type="button" disabled=true>
+        <input value="Play" id="play" type="button" disabled=true>
+        <input value="Pause" id="pause" type="button">
+        <input value="Forward" id="forward" type="button" disabled=true>
+        <br>
+        <input value="Smooth" id="smooth" type="button">
+        <input value="Smooth & Normalize" id="smooth_normalize" type="button">
+        <table id="main_table" bgcolor="#DDDDDD" border="1">
+          <tr>
+            <td>
+              Channel #1 (meganta):
+            </td>
+            <td>
+              <select id="chan1" readonly=true>
+                <option >None</option>
+                <option selected="selected" >Vm</option>
+                <option>Ca</option>
+                <option>dVm/dt</option>
+                <option>dCa/dt</option>
+                <option>∂Vm</option>
+                <option>∂Ca</option>
+                <option>∇Vm</option>
+                <option>∇Ca</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Channel #2 (green):
+            </td>
+            <td>
+              <select id="chan2" readonly=true>
+                <option >None</option>
+                <option>Vm</option>
+                <option selected="selected" >Ca</option>
+                <option>dVm/dt</option>
+                <option>dCa/dt</option>
+                <option>∂Vm</option>
+                <option>∂Ca</option>
+                <option>∇Vm</option>
+                <option>∇Ca</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <input value="Swap Vm/Ca" id="swap" type="button">
+        γ: <input type="number" id="gamma" min=0.5 max=5.0 value=1.0 step=0.1>
+        δ-threshold: <input type="number" id="threshold" min=0.0 max=1.0 value=0.5 step=0.05>
+      </td>
+      <td valign="top">
+        Orientation: <select id="orientation" readonly=true>
+          <option selected="selected" >Vertical</option>
+          <option>Horizontal</option>
+          <option>Main Diagonal</option>
+          <option>Alt Diagonal</option>
+          <option>Circular</option>
+        </select>
+        <hr>
+        <canvas id="canvasStack" width=300 height=400></canvas>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <canvas id="canvasSignal" width=400 height=300></canvas>
+      </td>
+      <td>
+        <canvas id="canvasPhase" width=300 height=300></canvas>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<script type='text/javascript' src='fft.js'></script>
+
+<script type="module">
+
+'use strict';
+
+
+const canvas2D = document.getElementById('canvas2D');
+const ctx2D = canvas2D.getContext('2d');
+
+const canvasSignal = document.getElementById('canvasSignal');
+const ctxSignal = canvasSignal.getContext('2d');
+
+const canvasStack = document.getElementById('canvasStack');
+const ctxStack = canvasStack.getContext('2d');
+
+const canvasPhase = document.getElementById('canvasPhase');
+const ctxPhase = canvasPhase.getContext('2d');
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const cube_name = urlParams.get('s') || '20210219_6_13.cube';
+const cube_group = urlParams.get('g') || '20210219';
+
+document.getElementById('check_' + cube_group).checked = true;
+document.getElementById('div_' + cube_group).style.display = 'block';
+
+const clamp = (x, min, max) => Math.min(Math.max(x, min), max);
+
+fetch(cube_name)
+  .then(response => response.arrayBuffer())
+  .then(buf => init(buf));
+
+//var cube;
+var samples = 0;
+var playing = true;
+var t = 0;
+var X = 64;
+var Y = 64;
+
+const scale = 2;
+const N = 128;
+const R0 = Math.round(N / (2*Math.PI));
+const leftMargin = (canvas2D.width - scale*N) / 2;
+const topMargin = (canvas2D.height - scale*N) / 2;
+
+var cubeZero;
+var cubeVm;
+var cubeCa;
+
+var cubeDiffVm;
+var cubeDiffCa;
+
+var cubeUpstrokeVm;
+var cubeUpstrokeCa;
+
+var phaseVm;
+var phaseCa;
+
+var stackImage;
+var phaseImage;
+
+var cubeEdgeVm;
+var cubeEdgeCa;
+
+var requestRedraw = false;
+
+function init(buf) {
+  const cube = new Uint16Array(buf);
+  samples = cube.length / (N * N);
+  cubeZero = new Float32Array(cube.length);
+  cubeZero.fill(0.0);
+  split_cube(cube);
+  plot_stack();
+  plot_phase_diagram();
+}
+
+function split_cube(cube) {
+  cubeVm = new Float32Array(cube.length);
+  cubeCa = new Float32Array(cube.length);
+
+  for (let i = 0; i < cube.length; i++) {
+    cubeVm[i] = (cube[i] >> 8) / 255;
+    cubeCa[i] = (cube[i] & 255) / 255;
+  }
+}
+
+function get_channel(cube, x, y) {
+  const u = new Float32Array(samples);
+  for (let i = 0; i < samples; i++) {
+    u[i] = cube[get_pixel(x, y, i)];
+  }
+  return u;
+}
+
+function normalize_channel(cube, x, y) {
+  let u = get_channel(cube, x, y);
+  const min = Math.min.apply(null, u);
+  const max = Math.max.apply(null, u);
+  if (min === max) {
+    u.fill(0.0);
+    return u;
+  } else {
+    return u.map(z => (z-min)/(max-min));
+  }
+}
+
+function smooth(u, normalize=true) {
+  const w = new Float32Array(u.length);
+  w.fill(0.0);
+  const NN = 2*N;
+
+  for (let i = 0; i < samples; i++) {
+    for(let x = 2; x < N-2; x++) {
+      for(let y = 2; y < N-2; y++) {
+        const k = get_pixel(x, y, i);
+        w[k] = (
+            41 * u[k] +
+            26 * (u[k-1] + u[k+1] + u[k-N] + u[k+N]) +
+            16 * (u[k-N-1] + u[k-N+1] + u[k+N-1] + u[k+N+1]) +
+            7 * (u[k-2] + u[k+2] + u[k-NN] + u[k+NN]) +
+            (u[k-NN-2] + u[k-NN+2] + u[k+NN-2] + u[k+NN+2])
+        ) / 273;
+      }
+    }
+  }
+
+  if (normalize) {
+    for(let x = 2; x < N; x++) {
+      for(let y = 2; y < N-2; y++) {
+        const normalized = normalize_channel(w, x, y);
+        for (let i = 0; i < samples; i++) {
+          w[get_pixel(x, y, i)] = normalized[i];
+        }
+      }
+    }
+  }
+
+  return w;
+}
+
+function differentiate(u, normalize=true) {
+  const w = new Float32Array(u.length);
+  w.fill(0.0);
+  const K = N*N;
+
+  for(let x = 0; x < N; x++) {
+    for(let y = 0; y < N; y++) {
+
+      for(let i = 2; i < samples-2; i++) {
+        const k = get_pixel(x, y, i);
+        w[k] = (2*(u[k+2*K] - u[k-2*K]) + (u[k+N] - u[k-N]));
+      }
+
+      if (normalize) {
+        const normalized = normalize_channel(w, x, y);
+        for (let i = 0; i < samples; i++) {
+          w[get_pixel(x, y, i)] = normalized[i];
+        }
+      }
+
+    }
+  }
+  return w;
+}
+
+function find_edge(u) {
+  const w = new Float32Array(u.length);
+  w.fill(0.0);
+  const s = Math.sqrt(32) / 5;
+
+  for(let i = 0; i < samples; i++) {
+    for(let x = 1; x < N-1; x++) {
+      for(let y = 1; y < N-1; y++) {
+        const k = get_pixel(x, y, i);
+        const sobelX = 2*(u[k-1] - u[k+1]) + u[k-N-1] + u[k+N-1] - u[k-N+1] - u[k+N+1];
+        const sobelY = 2*(u[k-N] - u[k+N]) + u[k-1-N] + u[k+1-N] - u[k-1+N] - u[k+1+N];
+        w[k] = Math.hypot(sobelX, sobelY);
+      }
+    }
+  }
+
+  for(let x = 0; x < N; x++) {
+    for(let y = 0; y < N; y++) {
+      // const normalized = normalize_channel(w, x, y);
+      // for (let i = 0; i < samples; i++) {
+      //   w[get_pixel(x, y, i)] = normalized[i];
+      // }
+      const p = get_channel(w, x, y);
+      //const mean = p.reduce((x,y) => x+y, 0) / p.length;
+      const l = Math.min.apply(null, p);
+      const q = p.map(x => clamp((x - l)/s, 0, 1));
+      for(let i = 0; i < samples; i++) {
+          const pixel = get_pixel(x, y, i);
+          w[pixel] = q[i];
+      }
+    }
+  }
+
+  return w;
+}
+
+function find_upstroke(u, p, force=false) {
+  const threshold = document.getElementById('threshold').value;
+  const w = new Float32Array(u.length);
+  w.fill(0.0);
+
+  const K = N*N;
+
+  for(let x = 0; x < N; x++) {
+    for(let y = 0; y < N; y++) {
+      for(let i = 1; i < samples; i++) {
+          const pixel = get_pixel(x, y, i);
+          if (p[pixel] >= threshold && p[pixel-K] < threshold) {
+            w[pixel] = 1.0;
+          }
+      }
+    }
+  }
+  return w;
+}
+
+
+// hilbert transform
+function calc_phase(cube, x, y) {
+  const u = get_channel(cube, x, y);
+  const n = u.length;
+  const v = new Float32Array(n);
+  v.fill(0.0);
+  transform(u, v);
+
+  const h = new Float32Array(n);
+
+  if (n % 2 === 0) {
+    h[0] = 1.0;
+    h[n>>1] = 1.0;
+    h.fill(2.0, 1, n>>1);
+  } else {
+    h[0] = 1.0;
+    h[(n+1)>>1] = 2.0;
+  }
+
+  for (let i=0; i < n; i++) {
+    u[i] = u[i] * h[i];
+    v[i] = v[i] * h[i];
+  }
+
+  transform(u, v);
+
+  const tau = Math.PI * 2;
+
+  for (let i=0; i < samples; i++) {
+    u[i] = Math.atan2(v[i], u[i]) / Math.PI + 0.5;
+  }
+
+  return u;
+}
+
+function get_pixel(x, y, t) {
+  return x + y*N + t*(N * N);
+}
+
+// function get_vm_color(pixel, gamma) {
+//   const r = Math.round(cubeVm[pixel]**gamma * 255);
+//   return 'rgb(' + r + ',' + r + ',' + r + ')';
+// }
+//
+// function get_ca_color(pixel, gamma) {
+//   const g = Math.round(cubeCa[pixel]**gamma * 255);
+//   return 'rgb(' + g + ',' + g + ',' + g + ')';
+// }
+//
+// function get_both_color(pixel, gamma) {
+//   const r = Math.round(cubeVm[pixel]**gamma * 255);
+//   const g = Math.round(cubeCa[pixel]**gamma * 255);
+//   return 'rgb(' + r + ',' + g + ',' + r + ')';
+// }
+
+function get_color(u1, u2, pixel, gamma) {
+  const r = Math.round(u1[pixel]**gamma * 255);
+  const g = Math.round(u2[pixel]**gamma * 255);
+  //return 'rgb(' + r + ',' + g + ',' + r + ')';
+  return `rgb(${r}, ${g}, ${r})`;
+}
+
+function get_color_values(u1, u2, pixel, gamma) {
+  const r = Math.round(u1[pixel]**gamma * 255);
+  const g = Math.round(u2[pixel]**gamma * 255);
+  //return 'rgb(' + r + ',' + g + ',' + r + ')';
+  return [r, g, r];
+}
+
+//************************************* Animate ******************************
+
+function process_chan_request(chan) {
+  switch(chan) {
+    case 'Vm':  return cubeVm;
+    case 'Ca':  return cubeCa;
+    case 'dVm/dt':
+      cubeDiffVm = cubeDiffVm || differentiate(cubeVm);
+      return cubeDiffVm;
+    case 'dCa/dt':
+      cubeDiffCa = cubeDiffCa || differentiate(cubeCa);
+      return cubeDiffCa;
+    case '∂Vm':
+      cubeUpstrokeVm = cubeUpstrokeVm || find_upstroke(cubeVm, process_chan_request('dVm/dt'));
+      return cubeUpstrokeVm;
+    case '∂Ca':
+      cubeUpstrokeCa = cubeUpstrokeCa || find_upstroke(cubeCa, process_chan_request('dCa/dt'));
+      return cubeUpstrokeCa;
+    case '∇Vm':
+      cubeEdgeVm = cubeEdgeVm || find_edge(cubeVm);
+      return cubeEdgeVm;
+    case '∇Ca':
+      cubeEdgeCa = cubeEdgeCa || find_edge(cubeCa);
+      return cubeEdgeCa;
+    case 'None':  return cubeZero;
+    default:  return cubeZero;
+  }
+}
+
+function animate() {
+  const ctx = ctx2D;
+
+  ctx.save();
+  ctx.translate(leftMargin, topMargin);
+
+  const gamma = document.getElementById('gamma').value;
+  const ori = document.getElementById('orientation').value;
+
+  const chan1 = document.getElementById('chan1').value;
+  const chan2 = document.getElementById('chan2').value;
+
+  const a = process_chan_request(chan1);
+  const b = process_chan_request(chan2);
+
+  for (let y = 0; y < N; y++) {
+    for (let x = 0; x < N; x++) {
+      ctx.fillStyle = get_color(a, b, get_pixel(x, y, t), gamma);
+      ctx.fillRect(x*scale, y*scale, scale, scale);
+    }
+  }
+
+  //
+  // if (vm && ca) {
+  //   for (let y = 0; y < N; y++) {
+  //     for (let x = 0; x < N; x++) {
+  //       ctx.fillStyle = get_both_color(get_pixel(x, y, t), gamma);
+  //       ctx.fillRect(x*scale, y*scale, scale, scale);
+  //     }
+  //   }
+  // } else if (vm) {
+  //   for (let y = 0; y < N; y++) {
+  //     for (let x = 0; x < N; x++) {
+  //       ctx.fillStyle = get_vm_color(get_pixel(x, y, t), gamma);
+  //       ctx.fillRect(x*scale, y*scale, scale, scale);
+  //     }
+  //   }
+  // } else if (ca) {
+  //   for (let y = 0; y < N; y++) {
+  //     for (let x = 0; x < N; x++) {
+  //       ctx.fillStyle = get_ca_color(get_pixel(x, y, t), gamma);
+  //       ctx.fillRect(x*scale, y*scale, scale, scale);
+  //     }
+  //   }
+  // }
+
+  ctx.strokeStyle = 'white';
+  ctx.lineWidth = 1;
+
+  ctx.beginPath();
+  ctx.moveTo(0, Y*scale);
+  ctx.lineTo(2*N, Y*scale);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(X*scale, 0);
+  ctx.lineTo(X*scale, 2*N);
+  ctx.stroke();
+
+  if (ori === 'Main Diagonal') {
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(2*N, 2*N);
+    ctx.stroke();
+  } else if (ori === 'Alt Diagonal') {
+    ctx.beginPath();
+    ctx.moveTo(2*N, 0);
+    ctx.lineTo(0, 2*N);
+    ctx.stroke();
+  } else if (ori === 'Circular') {
+    ctx.beginPath();
+    ctx.arc(scale*X, scale*Y, scale*R0, 0, 2*Math.PI);
+    ctx.stroke();
+  }
+
+  ctx.restore();
+
+  plot_signal();
+}
+
+//*********************************** Signals ********************************
+
+function scaled_signal(u, height) {
+  return 10 + (height - 20) * (1 - u);
+}
+
+function plot_signal() {
+  const ctx = ctxSignal;
+  const w = canvasSignal.width;
+  const h = canvasSignal.height;
+
+  ctx.save();
+
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, w, h);
+
+  let vm = get_channel(cubeVm, X, Y);
+  let ca = get_channel(cubeCa, X, Y);
+
+  ctx.lineWidth = 2;
+
+  if (samples*scale <= w) {
+    ctx.strokeStyle = 'magenta';
+    ctx.beginPath();
+    ctx.moveTo(0, scaled_signal(vm[0],h));
+    for(let i=1; i<samples; i++) {
+      ctx.lineTo(scale*i, scaled_signal(vm[i],h));
+    }
+    ctx.stroke();
+
+    ctx.strokeStyle = 'green';
+    ctx.beginPath();
+    ctx.moveTo(0, scaled_signal(ca[0],h));
+    for(let i=1; i<samples; i++) {
+      ctx.lineTo(scale*i, scaled_signal(ca[i],h));
+    }
+    ctx.stroke();
+
+    ctx.strokeStyle = 'black';
+    ctx.beginPath();
+    ctx.moveTo(t*scale, 0);
+    ctx.lineTo(t*scale, h);
+    ctx.stroke();
+  } else {  // long recordings
+    const l = (w >> 1) - t*scale;
+
+    ctx.strokeStyle = 'magenta';
+    ctx.beginPath();
+    ctx.moveTo(l, scaled_signal(vm[0],h));
+    for(let i=1; i<samples; i++) {
+      ctx.lineTo(l + scale*i, scaled_signal(vm[i],h));
+      if (l + scale*i > w) break;
+    }
+    ctx.stroke();
+
+    ctx.strokeStyle = 'green';
+    ctx.beginPath();
+    ctx.moveTo(l, scaled_signal(ca[0],h));
+    for(let i=1; i<samples; i++) {
+      ctx.lineTo(l + scale*i, scaled_signal(ca[i],h));
+      if (l + scale*i > w) break;
+    }
+    ctx.stroke();
+
+    ctx.strokeStyle = 'black';
+    ctx.beginPath();
+    ctx.moveTo(w >> 1, 0);
+    ctx.lineTo(w >> 1, h);
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+//************************ Phase Diagram *************************************
+
+function plot_phase_diagram() {
+  const ctx = ctxPhase;
+  const canvas = canvasPhase;
+
+  const w = canvas.width;
+  const h = canvas.height;
+
+  ctx.save();
+
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, w, h);
+
+  ctx.strokeStyle = 'gray';
+  ctx.lineWidth = 2;
+
+  phaseVm = calc_phase(cubeVm, X, Y);
+  phaseCa = calc_phase(cubeCa, X, Y);
+
+  ctx.beginPath();
+  ctx.moveTo(scaled_signal(phaseVm[0],w), scaled_signal(phaseCa[0],h));
+
+  for(let i=1; i<w; i++) {
+    ctx.lineTo(scaled_signal(phaseVm[i],w), scaled_signal(phaseCa[i],h));
+  }
+
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(5, h-5);
+  ctx.lineTo(50, h-5);
+  ctx.moveTo(5, h-5);
+  ctx.lineTo(5, h-50);
+  ctx.stroke();
+
+  ctx.fillStyle = 'black';
+  ctx.font = "16px serif";
+  ctx.fillText("Ca", 5, h-55);
+  ctx.fillText("Vm", 40, h-10);
+
+  phaseImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+  ctx.restore();
+}
+
+function update_phase() {
+  const ctx = ctxPhase;
+  const canvas = canvasPhase;
+
+  const w = canvas.width;
+  const h = canvas.height;
+
+  ctx.save();
+
+  if (phaseImage) {
+    ctx.putImageData(phaseImage, 0, 0);
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(scaled_signal(phaseVm[t],w), scaled_signal(phaseCa[t],h), 5, 0, 2*Math.PI);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+//*********************************** Stack Diagram **************************
+
+function plot_stack() {
+  const ctx = ctxStack;
+  const canvas = canvasStack;
+
+  const w = canvas.width;
+  const h = canvas.height;
+
+  ctx.save();
+  ctx.translate(leftMargin, 0);
+
+  const gamma = document.getElementById('gamma').value;
+  const ori = document.getElementById('orientation').value;
+
+  const chan1 = document.getElementById('chan1').value;
+  const chan2 = document.getElementById('chan2').value;
+
+  const a = process_chan_request(chan1);
+  const b = process_chan_request(chan2);
+
+  let f = (i,j) => get_pixel(j, Y, i);
+
+  switch(ori) {
+    case 'Horizontal':
+      f = (i,j) => get_pixel(j, Y, i);
+      break;
+    case 'Vertical':
+      f = (i,j) => get_pixel(X, j, i);
+      break;
+    case 'Main Diagonal':
+      f = (i,j) => get_pixel(j, j, i);
+      break;
+    case 'Alt Diagonal':
+      f = (i,j) => get_pixel(j, N - j, i);
+      break;
+    case 'Circular':
+      f = function(i,j) {
+        const theta = 2 * Math.PI * j / N;
+        let x = X + Math.round(R0 * Math.cos(theta));
+        let y = Y + Math.round(R0 * Math.sin(theta));
+        x = clamp(x, 0, N-1);
+        y = clamp(y, 0, N-1);
+        return get_pixel(x, y, i);
+      }
+      break;
+  }
+
+  stackImage = ctx.createImageData(N*scale, samples*scale);
+  const img = stackImage.data;
+  console.log(img.length);
+
+  for (let i = 0; i < samples; i++) {
+    for (let j = 0; j < N; j++) {
+        //ctx.fillStyle = get_color(a, b, f(i,j), gamma);
+        //ctx.fillRect(j*scale, i*scale, scale, scale);
+        const rgb = get_color_values(a, b, f(i,j), gamma);
+        for (let ii = 0; ii < scale; ii++) {
+          for (let jj = 0; jj < scale; jj++) {
+            const l = 4 * (j*scale + jj + (i*scale + ii)*N*scale);
+            img[l] = rgb[0];
+            img[l+1] = rgb[1];
+            img[l+2] = rgb[2];
+            img[l+3] = 255;
+          }
+        }
+    }
+  }
+
+  ctx.restore();
+}
+
+function update_stack() {
+  const ctx = ctxStack;
+  const canvas = canvasStack;
+
+  ctx.save();
+
+  const h = canvas.height;
+  const w = canvas.height;
+
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, w, h);
+
+  if (stackImage) {
+    let y = h >> 1;
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, w, h);
+
+    if (stackImage.height > h) {
+      ctx.putImageData(stackImage, leftMargin, y - t*scale);
+    } else {
+      ctx.putImageData(stackImage, leftMargin, 0);
+      y = t * scale;
+    }
+
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(w, y);
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+setInterval(
+  function() {
+      if (cubeVm && playing) {
+        t = (t+1) % samples;
+        animate();
+        if (requestRedraw) {
+          plot_stack();
+          plot_phase_diagram();
+          requestRedraw = false;
+        } else {
+          update_stack();
+          update_phase();
+        }
+      }
+  },
+  50
+)
+
+document.getElementById('pause').addEventListener('click', event => {
+    playing = false;
+    document.getElementById('play').disabled = false;
+    document.getElementById('back').disabled = false;
+    document.getElementById('forward').disabled = false;
+    document.getElementById('pause').disabled = true;
+});
+
+document.getElementById('play').addEventListener('click', event => {
+    playing = true;
+    document.getElementById('play').disabled = true;
+    document.getElementById('back').disabled = true;
+    document.getElementById('forward').disabled = true;
+    document.getElementById('pause').disabled = false;
+});
+
+document.getElementById('back').addEventListener('click', event => {
+  if (cubeVm) {
+    if (t > 0) {
+      t--;
+    }
+    animate();
+    update_stack();
+    update_phase();
+  }
+});
+
+document.getElementById('forward').addEventListener('click', event => {
+  if  (cubeVm) {
+    if (t < samples - 1) {
+      t++;
+    }
+    animate();
+    update_stack();
+    update_phase();
+  }
+});
+
+document.getElementById('rewind').addEventListener('click', event => {
+  if  (cubeVm) {
+    t = 0;
+    animate();
+    requestRedraw = true;
+  }
+});
+
+canvas2D.addEventListener('mousedown', e => {
+  const x = e.offsetX - leftMargin;
+  const y = e.offsetY - topMargin;
+
+  if (x >= 0 && x < 2*N && y >=0 && y <= 2*N) {
+    X = Math.round(x/scale);
+    Y = Math.round(y/scale);
+  }
+
+  requestRedraw = true;
+});
+
+document.getElementById('orientation').addEventListener('change', event => {
+  requestRedraw = true;
+});
+
+document.getElementById('chan1').addEventListener('change', event => {
+  requestRedraw = true;
+});
+
+document.getElementById('chan2').addEventListener('change', event => {
+  requestRedraw = true;
+});
+
+document.getElementById('gamma').addEventListener('click', event => {
+  requestRedraw = true;
+});
+
+document.getElementById('threshold').addEventListener('click', event => {
+  requestRedraw = true;
+  process_upstroke(true);
+});
+
+document.getElementById('smooth').addEventListener('click', event => {
+  cubeVm = smooth(cubeVm, false);
+  cubeCa = smooth(cubeCa, false);
+  requestRedraw = true;
+});
+
+document.getElementById('smooth_normalize').addEventListener('click', event => {
+  cubeVm = smooth(cubeVm, true);
+  cubeCa = smooth(cubeCa, true);
+  requestRedraw = true;
+});
+
+document.getElementById('swap').addEventListener('click', event => {
+  const tmp = cubeCa.map(x => 1.0 - x);
+  cubeCa = cubeVm.map(x => 1.0 - x);
+  cubeVm = tmp
+  requestRedraw = true;
+});
+
+document.getElementById('check_20210219').addEventListener('click', event => {
+  const b = document.getElementById('check_20210219').checked;
+  document.getElementById('div_20210219').style.display = b ? "block" : "none";
+});
+
+document.getElementById('check_20210217').addEventListener('click', event => {
+  const b = document.getElementById('check_20210217').checked;
+  document.getElementById('div_20210217').style.display = b ? "block" : "none";
+});
+
+</script>
+
+</body>
+</html>
