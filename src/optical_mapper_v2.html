@@ -1,0 +1,199 @@
+<html>
+<head>
+</head>
+<body>
+
+<canvas id="canvasA" width=256 height=256></canvas>
+<canvas id="canvasB" width=256 height=256></canvas>
+<br>
+<input value="stretch" id="stretch" type="checkbox">Stretch
+
+<div id='matrix'></div>
+
+<script async type="text/javascript" src="decompress.js"></script>
+<script type="text/javascript" src="colormaps.js"></script>
+
+<script type="text/javascript">
+  'use strict';
+
+  const canvasA = document.getElementById('canvasA');
+  const ctxA = canvasA.getContext('2d');
+
+  const canvasB = document.getElementById('canvasB');
+  const ctxB = canvasB.getContext('2d');
+
+  const imgA = ctxA.createImageData(canvasA.width, canvasA.height);
+  const imgB = ctxB.createImageData(canvasB.width, canvasB.height);
+
+  var decompress;
+
+  const root = '../data/v2/';
+
+  ////////////////////////////////////////////////////////////////////////////
+
+  function alloc(x) {
+      const n = x.length * x.BYTES_PER_ELEMENT;
+      const ptr = Module._malloc(n);
+      const heap = new Uint8Array(Module.HEAPU8.buffer, ptr, n);
+      heap.set(new Uint8Array(x.buffer));
+      x.__ptr = ptr;
+      return ptr;
+  }
+
+  function copyBack(x) {
+      const n = x.length * x.BYTES_PER_ELEMENT;
+      const heap = new Uint8Array(Module.HEAPU8.buffer, x.__ptr, n);
+      new Uint8Array(x.buffer).set(heap);
+      return x;
+  }
+
+  function dealloc(buf) {
+      Module._free(buf);
+  }
+
+  function toHeap(ptr, x, length, byteOffset=0) {
+      const bytes = length * x.BYTES_PER_ELEMENT;
+      const heap = new Uint8Array(Module.HEAPU8.buffer, ptr, bytes);
+      const mem = new Uint8Array(x.buffer, byteOffset * x.BYTES_PER_ELEMENT, bytes);
+      heap.set(mem);
+  }
+
+  function fromHeap(x, ptr, length, byteOffset=0) {
+      const bytes = length * x.BYTES_PER_ELEMENT;
+      const heap = new Uint8Array(Module.HEAPU8.buffer, ptr, bytes);
+      const mem = new Uint8Array(x.buffer, byteOffset * x.BYTES_PER_ELEMENT, bytes);
+      mem.set(heap);
+  }
+
+  ///////////////////////////////////////////////////////////////////////////
+
+  var recording = {'data': []};
+  var header;
+  var t = 0;
+
+  function ready() {
+    decompress = Module.cwrap('decompress', 'number', ['number', 'number', 'number', 'number', 'number', 'number']);
+
+    fetch(root + 'index.json', {cache: "no-store"})
+      .then(response => response.json())
+      .then(buf => process_header(buf));
+  }
+
+  function process_header(h) {
+      recording.data = [];
+      header = h;
+
+      for(let chan = 0; chan < h.channels.length; chan++) {
+          process_chan(h, chan);
+      }
+
+      // write_matrix();
+  }
+
+  function process_chan(h, chan) {
+      fetch(root + h.channels[chan].path, {cache: "no-store"}) // TODO: remove no-store for deployment
+        .then(response => response.arrayBuffer())
+        .then(buf => process_stream(h, chan, buf));
+  }
+
+  function process_stream(h, chan, buf) {
+      const x = new Float32Array(h.nx * h.ny * h.frames);
+      const y = new Uint8Array(buf);
+      const channel = h.channels[chan];
+
+      for (let seg of channel.segments) {
+          process_segment(h, y, x, seg);
+      }
+
+      recording.data.push(
+        {
+            'cube': x,
+            'sizeX': h.nx,
+            'sizeY': h.ny,
+            'frames': h.frames,
+            'loc': channel.tanh_loc,
+            'scale': channel.tanh_scale,
+            'path': channel.path,
+            'label': 'XYZUVWMNOP'[chan]
+        }
+      )
+  }
+
+  function process_segment(h, buf, x, seg) {
+      const np = seg.s1 - seg.s0;
+      const p = Module._malloc(np * buf.BYTES_PER_ELEMENT);
+      toHeap(p, buf, np, seg.s0);
+
+      const nz = seg.t1 - seg.t0;
+      const nq = h.nx * h.ny * nz;
+      const q = Module._malloc(nq * x.BYTES_PER_ELEMENT);
+
+      const status = decompress(q, h.nx, h.ny, nz, p, np);
+
+      fromHeap(x, q, nq, h.nx * h.ny * seg.t0);
+
+      Module._free(p);
+      Module._free(q);
+  }
+
+  function access_fun(i, do_stretch) {
+      const data = recording.data;
+      if (i >= data.length) {
+          return index => 0;
+      } else if (do_stretch) {
+          const cube = data[i].cube;
+          const loc = data[i].loc;
+          const scale = data[i].scale;
+          // return index => Math.floor((1+Math.tanh((cube[index] - loc) / scale)) * 127);
+          return index => (1+Math.tanh((cube[index] - loc) / scale)) * 0.5;
+      } else {
+        const cube = data[i].cube;
+        return index => cube[index];
+      }
+  }
+
+  function draw_single(ctx, img, chan, cm, fun, t) {
+      const data = recording.data;
+      const nx = ctx.canvas.width;
+      const ny = ctx.canvas.height;
+      const sizeX = chan < data.length ? data[chan].sizeX : 1;
+      const sizeY = chan < data.length ? data[chan].sizeY : 1;
+      const scaleX = sizeX / nx;
+      const scaleY = sizeY / ny;
+
+      for (let i = 0; i < nx; i++) {
+          for (let j = 0; j < ny; j++) {
+              const k = i + j*nx;
+              const l = Math.round(i*scaleX) + Math.round(j*scaleY)*sizeX + t*sizeX*sizeY;
+              const color = cm[Math.floor(fun(l) * 255)];
+              img.data[4*k] = color[0];
+              img.data[4*k + 1] = color[1];
+              img.data[4*k + 2] = color[2];
+              img.data[4*k + 3] = 255;
+          }
+      }
+
+      ctx.putImageData(img, 0, 0);
+  }
+
+  function draw(t) {
+      const do_stretch = document.getElementById('stretch').checked;
+      draw_single(ctxA, imgA, 0, magma, access_fun(0, do_stretch), t);
+      draw_single(ctxB, imgB, 1, viridis, access_fun(1, do_stretch), t);
+  }
+
+  setInterval(
+    function() {
+        if (recording.data.length > 0) {
+          t = (t+1) % recording.data[0].frames;
+          draw(t);
+        }
+    },
+    50
+  )
+
+
+</script>
+
+</body>
+</html>
